@@ -18,12 +18,9 @@ jobs:
           enable-stack: true
           stack-version: 'latest'
       - name: build
-      - run: echo "🐧 Building..."
-      - run: stack build
+        run: stack build
       - name: test
-      - run: echo "🐧 Testing..."
-      - run: stack test
+        run: stack test
       - name: run
-      - run: echo "🐧 Running..."
-      - run: stack exec miis-exe
+        run: stack exec miis-exe
       
