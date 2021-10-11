@@ -1,0 +1,29 @@
+name: Haskell Stack
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Stack Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: haskell/actions/setup@v1
+        with:
+          ghc-version: '8.10'
+          enable-stack: true
+          stack-version: 'latest'
+      - name: build
+      - run: echo "🐧 Building..."
+      - run: stack build
+      - name: test
+      - run: echo "🐧 Testing..."
+      - run: stack test
+      - name: run
+      - run: echo "🐧 Running..."
+      - run: stack exec miis-exe
+      
